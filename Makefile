@@ -1,13 +1,8 @@
+obj-m = hello.o
 
-CC = gcc
-CFLAGS = -Wall
-
-exe: main.o copy.o
-	$(CC) $(CFLAGS) -o $@ $^
-
-main.o: main.c copy.h
-	$(CC) $(CFLAGS) -c $<
-
-copy.o: copy.c
-	$(CC) $(CFLAGS) -c $<
-
+KDIR := /home/rlejr/WSL2-Linux-Kernel-linux-msft-wsl-5.15.133.1
+PWD := $(shell pwd)
+default:
+	make -C $(KDIR) M=$(PWD) modules
+clean:
+	rm -rf*.kr*.mod.*.*.cmd*.o*.ko
